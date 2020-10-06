@@ -16,6 +16,7 @@
                     </span>
                     <h4 class="text-section">COMPONENTES</h4>
                 </li>
+                @if (Auth::user()->id_rol == 3)
                 <li class="nav-item">
                     <a data-toggle="collapse" href="#base" class="collapsed" aria-expanded="false">
                         <i class="fas fa-list-ul"></i>
@@ -45,6 +46,26 @@
                                     <span class="sub-item">Roles</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('genero.index') }}">
+                                    <span class="sub-item">Generos</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('documento.index') }}">
+                                    <span class="sub-item">Tipos de Documentos</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('intereses.index') }}">
+                                    <span class="sub-item">Tasas de Intereses</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('Eprestamo.index') }}">
+                                    <span class="sub-item">Estado de Prestamos</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -59,6 +80,23 @@
                             <li>
                                 <a href="{{ route('user.index') }}">
                                     <span class="sub-item">Lista de Usuarios</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endif
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#clientes" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-user-tie"></i>
+                        <p>Clientes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="clientes" style="">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="#">
+                                    <span class="sub-item">Lista de Clientes</span>
                                 </a>
                             </li>
                         </ul>

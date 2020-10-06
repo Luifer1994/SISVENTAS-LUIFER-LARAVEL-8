@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EstadoProductos;
 use App\Models\Generos;
 use App\Models\Roles;
 use Illuminate\Http\Request;
@@ -17,9 +16,7 @@ class GenerosController extends Controller
     public function index()
     {
         $generos = Generos::all();
-        $estados = EstadoProductos::all();
-        $roles         = Roles::all();
-        return view('utilidades.utilidades2', compact('generos', 'estados', 'roles'));
+        return view('generos.index', compact('generos'));
     }
 
     /**

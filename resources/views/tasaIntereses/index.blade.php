@@ -17,16 +17,16 @@
    <div class="card-header">
        <div class="row">
            <div class="col-6">
-               <h4 class="card-title">ROLES</h4>
+               <h4 class="card-title">TASA INTERESES</h4>
            </div>
            <div class="col-6">
                <button class="btn btn-primary fa-pull-right" data-toggle="modal" data-target="#registrar">
                    <span class="btn-label">
                        <i class="fa fa-plus"></i>
                    </span>
-                   Rol
+                   Tasa Interes
                </button>
-               @include('roles.registrar')
+               @include('tasaIntereses.registrar')
            </div>
        </div> 
    </div>
@@ -35,17 +35,17 @@
            <thead>
              <tr>
                <th scope="col">ID</th>
-               <th scope="col">NOMBRE</th>
+               <th scope="col">TASA</th>
                <th scope="col">ACCIONES</th>
              </tr>
            </thead>
            <tbody>
                <?php $num=0; ?>
-               @foreach ($roles as $rol)
+               @foreach ($Tinteres as $interes)
                <?php $num++; ?>
                    <tr>
-                       <td width="10px">{{ $rol->id }}</td>
-                           <td>{{ $rol->nombreR }}</td>
+                       <td width="10px">{{ $interes->id }}</td>
+                           <td>{{ $interes->tasa}} %</td>
                            <td width="130px">
                                <button type="button" class="btn btn-icon btn-round btn-primary" data-toggle="modal" data-target="#actualizar<?=$num?>">
                                    <i class="fas fa-pencil-alt"></i>
@@ -55,8 +55,8 @@
                                </button>
                            </td>
                    </tr>
-                   @include('roles.actualizar')
-                   @include('roles.eliminar')
+                   @include('tasaIntereses.actualizar')
+                   @include('tasaIntereses.eliminar')
                @endforeach
            </tbody>
          </table>

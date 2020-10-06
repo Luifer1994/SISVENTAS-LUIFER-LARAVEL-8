@@ -8,7 +8,7 @@ use App\Models\Roles;
 use App\Models\TipoDocumentos;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -18,17 +18,19 @@ class UsersController extends Controller
     
     public function index()
     {
-        $tipoDocumento  = TipoDocumentos::all();
-        $roles          = Roles::all();
-        $generos        = Generos::all();
-        $ciudades       = Ciudades::all();
-        $usuarios       = User::select("users.id", "users.id_tipoDocumento", "users.password",
-         "users.name", "users.documento", "users.email", "users.id_genero", "users.id_rol",
-         "users.id_ciudad", "users.direccion", "roles.nombreR")
-        ->join("roles", "users.id_rol", "=", "roles.id")
-        ->get();
-        
-        return view('usuarios.index', compact('usuarios','tipoDocumento','roles','generos', 'ciudades'));
+        if (Auth::user()->id_rol == 3) {
+            $tipoDocumento  = TipoDocumentos::all();
+            $roles          = Roles::all();
+            $generos        = Generos::all();
+            $ciudades       = Ciudades::all();
+            $usuarios       = User::select("users.id", "users.id_tipoDocumento", "users.password",
+            "users.name", "users.documento", "users.email", "users.id_genero", "users.id_rol",
+            "users.id_ciudad", "users.direccion", "roles.nombreR")
+            ->join("roles", "users.id_rol", "=", "roles.id")
+            ->get();
+            
+            return view('usuarios.index', compact('usuarios','tipoDocumento','roles','generos', 'ciudades'));
+        } 
     }
 
     
